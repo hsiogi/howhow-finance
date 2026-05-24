@@ -3,396 +3,253 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>5 檔新手可以先認識的市值型 ETF</title>
-  <meta name="description" content="5檔適合新手認識的市值型ETF，幫助你理解不同市場和風格的ETF，從美國大型股到全球分散投資，讓你更有信心參與股票市場。">
+  <title>0056 安心存股現金流</title>
   <style>
     :root {
-      --bg: #f7f8f4;
-      --paper: #ffffff;
-      --ink: #1c2520;
-      --muted: #5f6b65;
-      --line: #dce3dc;
-      --accent: #f5b82e;
-      --accent-dark: #9b6300;
-      --green: #1f7a54;
-      --blue: #2c5f8f;
-      --shadow: 0 18px 50px rgba(28, 37, 32, 0.08);
-      --radius: 8px;
+      --paper: #f6f0e3;
+      --paper-line: rgba(116, 94, 66, 0.1);
+      --card: #fffefb;
+      --ink: #4f4036;
+      --muted: #766b61;
+      --soft: #efe1bd;
+      --soft-strong: #e4ca91;
+      --blue: #193047;
+      --red: #d7463f;
+      --border: rgba(79, 64, 54, 0.12);
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
-      background: var(--bg);
       color: var(--ink);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-      line-height: 1.75;
-      letter-spacing: 0;
+      background:
+        linear-gradient(var(--paper-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--paper-line) 1px, transparent 1px),
+        var(--paper);
+      background-size: 48px 48px;
     }
 
-    a {
-      color: inherit;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      border-bottom: 1px solid rgba(220, 227, 220, 0.9);
-      background: rgba(247, 248, 244, 0.92);
-      backdrop-filter: blur(14px);
-    }
-
-    .topbar-inner {
-      max-width: 1040px;
+    main {
+      width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
+      padding: 40px 0 72px;
     }
 
-    .brand {
-      font-weight: 800;
-      font-size: 15px;
-      white-space: nowrap;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .nav a {
-      text-decoration: none;
-    }
-
-    .nav a:hover {
-      color: var(--ink);
-    }
-
-    .wrap {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .hero {
-      padding: 72px 0 42px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
-      gap: 40px;
-      align-items: center;
+    .page-head {
+      margin: 0 0 28px;
+      padding: 28px 30px;
+      background: rgba(255, 254, 251, 0.76);
+      border: 1px solid var(--border);
+      border-radius: 24px;
     }
 
     .eyebrow {
-      display: inline-flex;
-      width: fit-content;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 10px;
-      border: 1px solid rgba(31, 122, 84, 0.28);
-      color: var(--green);
-      background: rgba(31, 122, 84, 0.07);
-      border-radius: 999px;
-      font-size: 13px;
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 16px;
       font-weight: 700;
-    }
-
-    h1,
-    h2,
-    h3 {
-      margin: 0;
-      line-height: 1.2;
-      letter-spacing: 0;
+      letter-spacing: 0.08em;
     }
 
     h1 {
-      margin-top: 18px;
-      font-size: clamp(36px, 7vw, 72px);
-      max-width: 9em;
+      margin: 0 0 14px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.15;
+      letter-spacing: 0;
     }
 
-    .lead {
-      margin: 24px 0 0;
-      max-width: 650px;
+    .summary {
+      max-width: 820px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.8;
+    }
+
+    .underline {
+      position: relative;
+      display: inline-block;
+      z-index: 1;
+    }
+
+    .underline::after {
+      content: "";
+      position: absolute;
+      left: -2%;
+      right: -2%;
+      bottom: 0.17em;
+      height: 0.18em;
+      border-radius: 999px;
+      background: var(--soft-strong);
+      z-index: -1;
+      transform: rotate(-1deg);
+    }
+
+    .panel {
+      margin-top: 34px;
+      padding: 34px;
+      background: rgba(255, 254, 251, 0.86);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+    }
+
+    .panel h2 {
+      margin: 0 0 18px;
+      font-size: 34px;
+      line-height: 1.3;
+    }
+
+    .intro-layout {
+      display: grid;
+      grid-template-columns: 1.05fr 1.2fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .intro-copy {
+      margin: 0;
       color: var(--muted);
       font-size: 19px;
+      line-height: 1.9;
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      padding: 10px 18px;
-      border-radius: 8px;
-      border: 1px solid transparent;
-      text-decoration: none;
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-    .button-primary {
-      background: var(--ink);
-      color: #fff;
-    }
-
-    .button-secondary {
-      background: transparent;
-      border-color: var(--line);
-      color: var(--ink);
-    }
-
-    .summary-panel {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 22px;
-    }
-
-    .summary-title {
-      font-size: 15px;
-      font-weight: 800;
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-
-    .ticker-list {
+    .info-list {
       display: grid;
-      gap: 10px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .ticker-list li {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       gap: 12px;
-      padding: 12px 0;
-      border-top: 1px solid var(--line);
+      margin: 0;
     }
 
-    .ticker-list li:first-child {
-      border-top: 0;
+    .info-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 14px;
+      padding: 15px 16px;
+      border: 1px solid rgba(228, 202, 145, 0.42);
+      border-radius: 14px;
+      background: #fffaf0;
     }
 
-    .ticker {
-      font-size: 24px;
-      line-height: 1;
+    .info-row dt {
+      color: var(--muted);
       font-weight: 900;
     }
 
-    .ticker-desc {
-      color: var(--muted);
-      text-align: right;
-      font-size: 14px;
+    .info-row dd {
+      margin: 0;
+      color: var(--ink);
+      font-weight: 800;
+      line-height: 1.6;
     }
 
-    .section {
-      padding: 46px 0;
-    }
-
-    .section-head {
-      max-width: 720px;
-      margin-bottom: 24px;
-    }
-
-    .section-head h2 {
-      font-size: clamp(28px, 4vw, 44px);
-    }
-
-    .section-head p {
-      margin: 14px 0 0;
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .principles {
+    .detail-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 14px;
+      margin-bottom: 28px;
     }
 
-    .principle {
+    .metric {
       padding: 18px;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      min-height: 132px;
+      border-radius: 16px;
+      background: #fffaf0;
+      border: 1px solid rgba(228, 202, 145, 0.45);
     }
 
-    .principle strong {
+    .metric span {
       display: block;
-      font-size: 18px;
       margin-bottom: 8px;
-    }
-
-    .principle span {
       color: var(--muted);
       font-size: 15px;
-    }
-
-    .etf-grid {
-      display: grid;
-      gap: 16px;
-    }
-
-    .etf-card {
-      display: grid;
-      grid-template-columns: 142px minmax(0, 1fr);
-      gap: 22px;
-      padding: 24px;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-    }
-
-    .etf-code {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      gap: 10px;
-      padding-right: 20px;
-      border-right: 1px solid var(--line);
-    }
-
-    .etf-code span {
-      width: fit-content;
-      padding: 4px 9px;
-      border-radius: 999px;
-      color: var(--accent-dark);
-      background: rgba(245, 184, 46, 0.22);
-      font-size: 13px;
       font-weight: 800;
     }
 
-    .etf-code strong {
-      font-size: 34px;
-      line-height: 1;
+    .metric strong {
+      display: block;
+      font-size: 27px;
+      line-height: 1.25;
     }
 
-    .etf-card h3 {
-      font-size: 24px;
-      margin-bottom: 10px;
+    .detail-copy {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: start;
     }
 
-    .plain {
-      margin: 0 0 14px;
+    .detail-copy p,
+    .detail-copy li {
       color: var(--muted);
+      font-size: 18px;
+      line-height: 1.85;
     }
 
-    .quote {
-      margin: 16px 0;
-      padding: 14px 16px;
-      border-left: 4px solid var(--accent);
-      background: rgba(245, 184, 46, 0.12);
-      font-weight: 800;
-    }
-
-    .note {
-      margin: 0;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .detail-list {
-      margin: 12px 0 16px;
-      padding-left: 20px;
-      color: var(--muted);
-    }
-
-    .detail-list li {
-      margin: 4px 0;
-    }
-
-    .compare-table {
+    table {
       width: 100%;
       border-collapse: collapse;
       overflow: hidden;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
+      border-radius: 16px;
+      background: var(--card);
+      font-size: 17px;
     }
 
-    .compare-table th,
-    .compare-table td {
-      padding: 15px 18px;
-      border-bottom: 1px solid var(--line);
+    th,
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(79, 64, 54, 0.1);
+      text-align: right;
+    }
+
+    th:first-child,
+    td:first-child {
       text-align: left;
-      vertical-align: top;
     }
 
-    .compare-table th {
-      background: #eef4f0;
-      font-size: 14px;
-      color: var(--muted);
+    th {
+      color: var(--ink);
+      background: #f2dfb4;
+      font-weight: 900;
     }
 
-    .compare-table tr:last-child td {
+    tr:last-child td {
       border-bottom: 0;
     }
 
-    .questions {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .question {
-      padding: 14px;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      font-weight: 800;
+    .notes {
+      margin-top: 26px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
       font-size: 15px;
+      line-height: 1.8;
     }
 
     .subscribe {
-      padding: 48px 0 70px;
-    }
-
-    .subscribe-inner {
+      margin-top: 34px;
+      padding: 30px;
+      background: #10251c;
+      color: #fff;
+      border-radius: 26px;
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(300px, 420px);
       gap: 28px;
       align-items: center;
-      padding: 30px;
-      background: #10251c;
-      color: #fff;
-      border-radius: var(--radius);
     }
 
     .subscribe h2 {
+      margin: 0;
       font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.25;
     }
 
     .subscribe p {
       margin: 14px 0 0;
       color: rgba(255, 255, 255, 0.78);
+      font-size: 17px;
+      line-height: 1.8;
     }
 
     .form {
@@ -401,35 +258,15 @@
       padding: 18px;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: var(--radius);
+      border-radius: 14px;
     }
 
-    label {
-      font-weight: 800;
-      font-size: 14px;
-    }
-
-    input,
-    select {
+    .form iframe {
       width: 100%;
-      min-height: 44px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 8px;
-      padding: 9px 12px;
-      font: inherit;
-      background: #fff;
-      color: var(--ink);
-    }
-
-    .form button {
-      min-height: 46px;
+      min-height: 319px;
       border: 0;
       border-radius: 8px;
-      background: var(--accent);
-      color: #1f1704;
-      font: inherit;
-      font-weight: 900;
-      cursor: pointer;
+      background: #fff;
     }
 
     .form-note {
@@ -439,237 +276,251 @@
       line-height: 1.55;
     }
 
-    .tally-embed {
-      width: 100%;
-      min-height: 430px;
-      border: 0;
-      border-radius: 8px;
-      background: #fff;
-    }
-
     .fallback-link {
       color: #fff;
       font-weight: 800;
     }
 
-    .risk {
-      padding: 18px 0 34px;
-      color: var(--muted);
-      font-size: 13px;
-      border-top: 1px solid var(--line);
-    }
+    @media (max-width: 820px) {
+      main {
+        width: min(100% - 20px, 620px);
+        padding-top: 20px;
+      }
 
-    @media (max-width: 860px) {
-      .hero,
-      .subscribe-inner {
+      .intro-layout,
+      .detail-copy,
+      .detail-grid,
+      .subscribe {
         grid-template-columns: 1fr;
       }
 
-      .principles,
-      .questions {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .nav {
-        display: none;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .topbar-inner,
-      .wrap {
-        padding-left: 16px;
-        padding-right: 16px;
-      }
-
-      .hero {
-        padding-top: 44px;
-        gap: 28px;
-      }
-
-      .lead {
-        font-size: 17px;
-      }
-
-      .principles,
-      .questions {
-        grid-template-columns: 1fr;
-      }
-
-      .etf-card {
-        grid-template-columns: 1fr;
-        gap: 16px;
-        padding: 20px;
-      }
-
-      .etf-code {
-        padding-right: 0;
-        padding-bottom: 14px;
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .compare-table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-      }
-
-      .subscribe-inner {
+      .panel {
         padding: 22px;
+      }
+
+      .info-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
       }
     }
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand">好好理財</div>
-      <nav class="nav" aria-label="頁面導覽">
-        <a href="#why">為什麼這 5 檔</a>
-        <a href="#list">ETF 名單</a>
-        <a href="#subscribe">持續收到整理</a>
-      </nav>
-    </div>
-  </header>
-
   <main>
-    <section class="wrap hero">
-      <div>
-        <div class="eyebrow">市值型 ETF 入門</div>
-        <h1>5 檔新手可以先認識的市值型 ETF</h1>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#list">看 5 檔 ETF</a>
-          <a class="button button-secondary" href="#subscribe">加入學習筆記</a>
+    <header class="page-head">
+      <p class="eyebrow">0056 安心存股現金流</p>
+      <h1>我喜歡股利入袋的那種安心感</h1>
+      <p class="summary">
+        這份資料用「每年初投入 20 萬買進 0056、股息領出不再投入」的方式，看 2017 到 2026 年之間，0056 的持有市值與現金流如何變化。
+      </p>
+    </header>
+
+    <section class="panel" aria-label="0056 介紹">
+      <h2>0056 是什麼？</h2>
+      <div class="intro-layout">
+        <p class="intro-copy">
+          0056 是「元大台灣高股息證券投資信託基金」，常見簡稱是元大高股息。它是一檔台股高股息 ETF，目標不是單純買進市值最大的公司，而是追蹤以高股息為核心邏輯編製的指數。對想要現金流的人來說，0056 的特色是把投資成果透過配息定期發放出來，但配息金額與基金淨值仍會受到市場波動影響。
+        </p>
+        <dl class="info-list">
+          <div class="info-row">
+            <dt>基金代號</dt>
+            <dd>0056</dd>
+          </div>
+          <div class="info-row">
+            <dt>基金簡稱</dt>
+            <dd>元大台灣高股息基金</dd>
+          </div>
+          <div class="info-row">
+            <dt>基金類型</dt>
+            <dd>指數股票型 ETF</dd>
+          </div>
+          <div class="info-row">
+            <dt>追蹤指數</dt>
+            <dd>臺灣高股息指數</dd>
+          </div>
+          <div class="info-row">
+            <dt>英文名稱</dt>
+            <dd>FTSE TWSE Taiwan Dividend+ Index</dd>
+          </div>
+          <div class="info-row">
+            <dt>指數邏輯</dt>
+            <dd>從臺灣 50 指數與臺灣中型 100 指數組成的採樣母體中，篩選預測現金股利殖利率較高的股票，並以現金股利殖利率決定權重。</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="panel" aria-label="完整資料">
+      <h2>完整資料與計算假設</h2>
+      <div class="detail-grid">
+        <div class="metric">
+          <span>累計投入</span>
+          <strong>200 萬</strong>
+        </div>
+        <div class="metric">
+          <span>累計現金股息</span>
+          <strong>989,030 元</strong>
+        </div>
+        <div class="metric">
+          <span>2026/05/21 市值</span>
+          <strong>3,118,185 元</strong>
+        </div>
+        <div class="metric">
+          <span>市值 + 已領股息</span>
+          <strong>4,107,215 元</strong>
         </div>
       </div>
 
-    </section>
-
-  
-
-    <section id="list" class="wrap section">
-      <div class="section-head">
-        <h2>5檔重要的市值型 ETF</h2>
-        <p>這些ETF都是買下市場上大型股票的市值型ETF</p>
-      </div>
-
-      <div class="etf-grid">
-        <article class="etf-card">
-          <div class="etf-code">
-            <span>美國大型股</span>
-            <strong>VOO</strong>
-          </div>
-          <div>
-            <h3>投資美國大型股</h3>
-            <p class="plain">VOO 追蹤 S&P 500，主要投資美國大型企業。</p>
-            <div class="quote">投資美國大型公司(輝達、蘋果、微軟等股票)。</div>
-            <p class="plain">它投資美國前500大企業</p>
-            <p class="plain">很多人剛開始投資美股，會想自己挑 Apple、Microsoft、NVIDIA 這些公司。但如果你還沒有能力研究個股，VOO 可以讓你先理解：原來也可以透過 ETF 買下一整籃美國大型企業，而不是只押單一家公司。</p>
-            <p class="note">要注意的是，VOO 主要是美國市場，不是全球市場。如果你只買 VOO，本質上就是比較相信美國大型企業未來仍然能持續成長。</p>
-          </div>
-        </article>
-
-        <article class="etf-card">
-          <div class="etf-code">
-            <span>科技成長股</span>
-            <strong>QQQ</strong>
-          </div>
-          <div>
-            <h3>投資科技成長股</h3>
-            <p class="plain">QQQ 追蹤 Nasdaq-100，裡面有很多大型科技與成長型公司。</p>
-            <div class="quote">買下美國大型科技與成長股。（輝達、博通、特斯拉、谷歌等）</div>
-            <p class="plain">很多新手會看到科技股過去表現很好，就想直接投入。但 QQQ 很適合拿來做分散風險</p>
-            <div class="quote">包含100檔科技股</div>
-            <p class="plain">它受到大型科技股影響很大，漲的時候可能很有感，下跌時波動也可能比較大。</p>
-            <p class="note"> QQQ 主要投資的是「成長股」「科技股」</p>
-          </div>
-        </article>
-
-        <article class="etf-card">
-          <div class="etf-code">
-            <span>台灣大型股</span>
-            <strong>0050</strong>
-          </div>
-          <div>
-            <h3>投資台灣大型股</h3>
-            <p class="plain">0050 追蹤台灣 50 指數，主要投資台灣上市公司中市值較大的 50 家企業。(台積電、台達電、聯發科)</p>
-            <div class="quote">買下台灣最大的50間公司(依市值)</div>
-            <p class="plain">我介紹 0050，是因為它是台灣投資人最常接觸到的市值型 ETF 之一，也很適合拿來理解我影片裡講的觀念：</p>
-            <div class="quote">規則先訂好。公司變大，比重提高；公司變小，比重下降。</div>
-            <p class="plain">如果你不想每天猜哪一檔股票會漲，0050 這類市值型 ETF 可以讓你先用比較簡單的方式，理解「參與整個市場」的概念。</p>
-            <p class="note">要注意的是，0050 雖然投資 50 家公司，但台灣市場本身產業集中度比較高，尤其容易受到大型半導體與電子股影響。它不是沒有風險，而是風險來源比較清楚。</p>
-          </div>
-        </article>
-
-        <article class="etf-card">
-          <div class="etf-code">
-            <span>同類比較</span>
-            <strong>006208</strong>
-          </div>
-          <div>
-            <h3>學會怎麼看同類 ETF</h3>
-            <p class="plain">006208 也是追蹤台灣 50 指數，所以它和 0050 的投資範圍很接近。</p>
-            <div class="quote">另一檔追蹤台灣 50 的 ETF。</div>
-            <p class="plain">我介紹 006208，不是因為你一定要同時買 0050 和 006208，而是因為它很適合拿來學「同類 ETF 怎麼比較」。</p>
-            <p class="plain">同樣追蹤台灣 50，你可以開始比較：</p>
-            <ul class="detail-list">
-              <li>費用率</li>
-              <li>基金規模</li>
-              <li>流動性</li>
-              <li>買賣價差</li>
-              <li>追蹤誤差</li>
-              <li>配息方式</li>
-            </ul>
-            <p class="plain">這對新手很重要。</p>
-            <p class="plain">很多人看到兩檔 ETF 名字不同，就以為買兩檔會比較分散。但如果它們追蹤的指數很接近，成分股也很接近，其實分散效果沒有想像中大。</p>
-            <p class="note">所以 006208 的重點，是幫你練習比較 ETF，而不是看到一堆代號就全部買。</p>
-          </div>
-        </article>
-
-        <article class="etf-card">
-          <div class="etf-code">
-            <span>全球分散</span>
-            <strong>VT</strong>
-          </div>
-          <div>
-            <h3>買下全球股票市場共10041檔</h3>
-            <p class="plain">VT 是全球股票 ETF，投資範圍包含美國、非美已開發市場和新興市場。</p>
-            <div class="quote">買的是全世界股票。</div>
-            <p class="plain">它可以幫新手理解另一個重要觀念：</p>
-            <div class="quote">如果你不想猜哪一個國家會贏，可以認識全球分散ETF。</div>
-            <p class="plain">VOO 是美國大型股，0050 和 006208 是台灣大型股，QQQ 偏向美國科技成長股。這些都有各自的市場和風格。</p>
-            <p class="plain">VT 則是讓你看到更大的範圍：不只美國，也包含其他國家。</p>
-            <p class="note">但要注意，全球分散不代表報酬一定比較高，通常反而報酬會低一些。VT 的重點不是追求最刺激的表現，而是讓投資範圍不要只集中在單一國家。</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-  
-
-    <section id="subscribe" class="wrap subscribe">
-      <div class="subscribe-inner">
+      <div class="detail-copy">
         <div>
-          <h2>訂閱十年三百萬學習日記</h2>
-          <p>我會不定期整理 ETF、定期定額、資產配置，以及如何一步一步靠近第一個 300 萬的內容。如果你希望後續收到這些整理，可以留下 email。</p>
-          <p>我不會每天寄，也不會一直推銷。比較像是一份長期的理財學習日記。</p>
-        </div>
-
-        <div class="form">
-          <iframe data-tally-src="https://tally.so/embed/zxGoV0?alignLeft=1&hideTitle=1&dynamicHeight=1" loading="lazy" width="100%" height="319" frameborder="0" marginheight="0" marginwidth="0" title="訂閱十年三百萬學習日記"></iframe>
-          <p class="form-note">
-            如果表單沒有正常顯示，可以
-            <a class="fallback-link" href="https://tally.so/r/zxGoV0" target="_blank" rel="noopener">直接開啟表單</a>。
+          <p>
+            這份資料不是在找最高報酬率，而是回答一個更貼近存股者的問題：如果不想一直猜高低點、也不想靠賣股變現，0056 長期累積後，每年實際拿到的現金流會長成什麼樣子。
+          </p>
+          <p>
+            回測方式是從 2017 年開始，每年第一個交易日投入 20 萬買進 0056，股息領出、不再投入。表中的市值是該年度最後一筆可得價格估算，配息則是當年度實際領到的現金股息。
           </p>
         </div>
+        <div>
+          <ul>
+            <li>買進價格：每年第一個交易日收盤價。</li>
+            <li>統計期間：2017/01/01 至 2026/05/24。</li>
+            <li>股息處理：領出當現金流，不再投入。</li>
+            <li>未納入：交易成本、手續費、稅費。</li>
+            <li>2026 年只統計到 2026/05/24，並非完整年度。</li>
+          </ul>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>年度</th>
+            <th>累計投入</th>
+            <th>年底或統計日市值</th>
+            <th>當年領到股息</th>
+            <th>配息次數</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2017</td>
+            <td>200,000 元</td>
+            <td>216,263 元</td>
+            <td>8,218 元</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>2018</td>
+            <td>400,000 元</td>
+            <td>397,623 元</td>
+            <td>24,083 元</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>2019</td>
+            <td>600,000 元</td>
+            <td>724,306 元</td>
+            <td>45,003 元</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>2020</td>
+            <td>800,000 元</td>
+            <td>954,720 元</td>
+            <td>51,003 元</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>2021</td>
+            <td>1,000,000 元</td>
+            <td>1,294,749 元</td>
+            <td>69,403 元</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>2022</td>
+            <td>1,200,000 元</td>
+            <td>1,131,357 元</td>
+            <td>93,537 元</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>2023</td>
+            <td>1,400,000 元</td>
+            <td>1,959,304 元</td>
+            <td>115,253 元</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>2024</td>
+            <td>1,600,000 元</td>
+            <td>2,118,948 元</td>
+            <td>209,700 元</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td>2025</td>
+            <td>1,800,000 元</td>
+            <td>2,322,000 元</td>
+            <td>244,780 元</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td>2026</td>
+            <td>2,000,000 元</td>
+            <td>3,118,185 元</td>
+            <td>128,049 元</td>
+            <td>2</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="notes">
+        <strong>怎麼解讀：</strong>
+        第一年股息只有 8,218 元，但隨著每年固定買進，股數變多，現金流也跟著放大。到 2025 年，單年股息 244,780 元，已經超過每年投入的 20 萬。這不代表 0056 一定比 0050 更會賺；如果純看長期總報酬，0050 可能更漂亮。這篇想說的是另一件事：對想要穩定領息、不想一直煩惱賣點的人來說，高股息 ETF 提供的是一種現金流型的安心感。
+        <br><br>
+        <strong>風險提醒：</strong>
+        本文僅供參考，不是投資建議。ETF 價格會波動，配息金額也可能調整，過去績效不代表未來表現。
+      </div>
+    </section>
+
+    <section id="subscribe" class="subscribe" aria-label="訂閱筆記">
+      <div>
+        <h2>訂閱好好理財學習筆記</h2>
+        <p>我會不定期整理 ETF、現金流、定期定額與資產配置的內容。如果你想繼續收到這類整理，可以留下 email。</p>
+        <p>不會每天寄，也不會一直推銷。比較像是一份陪你慢慢理解投資的學習筆記。</p>
+      </div>
+
+      <div class="form">
+        <iframe data-tally-src="https://tally.so/embed/zxGoV0?alignLeft=1&hideTitle=1&dynamicHeight=1" loading="lazy" width="100%" height="319" frameborder="0" marginheight="0" marginwidth="0" title="訂閱好好理財學習筆記"></iframe>
+        <p class="form-note">
+          如果表單沒有正常顯示，可以
+          <a class="fallback-link" href="https://tally.so/r/zxGoV0" target="_blank" rel="noopener">直接開啟表單</a>。
+        </p>
       </div>
     </section>
   </main>
-
-  <footer class="wrap risk">
-    本文僅供學習參考，非投資建議，也不是任何 ETF 的買進或賣出建議。ETF 仍有價格波動、匯率、追蹤誤差、集中度、流動性與稅務等風險。過去績效不代表未來報酬。
-  </footer>
-<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+  <script>
+    var d = document;
+    var w = "https://tally.so/widgets/embed.js";
+    var v = function () {
+      if (typeof Tally !== "undefined") {
+        Tally.loadEmbeds();
+      } else {
+        d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function (e) {
+          e.src = e.dataset.tallySrc;
+        });
+      }
+    };
+    if (typeof Tally !== "undefined") {
+      v();
+    } else if (d.querySelector('script[src="' + w + '"]') == null) {
+      var s = d.createElement("script");
+      s.src = w;
+      s.onload = v;
+      s.onerror = v;
+      d.body.appendChild(s);
+    }
+  </script>
 </body>
 </html>

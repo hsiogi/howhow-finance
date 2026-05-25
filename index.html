@@ -26,6 +26,7 @@
     body {
       margin: 0;
       color: var(--ink);
+      overflow-x: hidden;
       background:
         linear-gradient(var(--paper-line) 1px, transparent 1px),
         linear-gradient(90deg, var(--paper-line) 1px, transparent 1px),
@@ -143,6 +144,7 @@
       color: var(--ink);
       font-weight: 800;
       line-height: 1.6;
+      overflow-wrap: anywhere;
     }
 
     .detail-grid {
@@ -171,6 +173,7 @@
       display: block;
       font-size: 27px;
       line-height: 1.25;
+      overflow-wrap: anywhere;
     }
 
     .detail-copy {
@@ -283,8 +286,28 @@
 
     @media (max-width: 820px) {
       main {
-        width: min(100% - 20px, 620px);
-        padding-top: 20px;
+        width: min(100% - 24px, 620px);
+        padding: 16px 0 42px;
+      }
+
+      .page-head {
+        margin-bottom: 16px;
+        padding: 22px 18px;
+        border-radius: 18px;
+      }
+
+      .eyebrow {
+        font-size: 13px;
+      }
+
+      h1 {
+        font-size: 34px;
+        line-height: 1.22;
+      }
+
+      .summary {
+        font-size: 16px;
+        line-height: 1.75;
       }
 
       .intro-layout,
@@ -295,12 +318,155 @@
       }
 
       .panel {
-        padding: 22px;
+        margin-top: 18px;
+        padding: 20px 16px;
+        border-radius: 18px;
+      }
+
+      .panel h2 {
+        margin-bottom: 14px;
+        font-size: 26px;
+      }
+
+      .intro-copy,
+      .detail-copy p,
+      .detail-copy li {
+        font-size: 16px;
+        line-height: 1.78;
       }
 
       .info-row {
         grid-template-columns: 1fr;
         gap: 6px;
+        padding: 13px 14px;
+      }
+
+      .info-row dt {
+        font-size: 13px;
+      }
+
+      .info-row dd {
+        font-size: 16px;
+      }
+
+      .metric {
+        padding: 15px;
+        border-radius: 14px;
+      }
+
+      .metric strong {
+        font-size: 24px;
+      }
+
+      table,
+      thead,
+      tbody,
+      tr,
+      th,
+      td {
+        display: block;
+      }
+
+      table {
+        background: transparent;
+        border-radius: 0;
+        font-size: 16px;
+      }
+
+      thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+      }
+
+      tbody {
+        display: grid;
+        gap: 12px;
+      }
+
+      tr {
+        padding: 14px;
+        border: 1px solid rgba(228, 202, 145, 0.48);
+        border-radius: 14px;
+        background: #fffaf0;
+      }
+
+      td {
+        display: grid;
+        grid-template-columns: 110px minmax(0, 1fr);
+        gap: 12px;
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(79, 64, 54, 0.09);
+        text-align: right;
+        align-items: baseline;
+      }
+
+      td:first-child {
+        text-align: right;
+        font-size: 22px;
+        font-weight: 900;
+      }
+
+      td:last-child {
+        border-bottom: 0;
+      }
+
+      td::before {
+        content: attr(data-label);
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 900;
+        text-align: left;
+      }
+
+      td:first-child::before {
+        content: "年度";
+      }
+
+      .notes {
+        font-size: 14px;
+      }
+
+      .subscribe {
+        margin-top: 18px;
+        padding: 22px 16px;
+        border-radius: 18px;
+      }
+
+      .subscribe h2 {
+        font-size: 28px;
+      }
+
+      .subscribe p {
+        font-size: 16px;
+      }
+
+      .form {
+        padding: 12px;
+      }
+
+      .form iframe {
+        min-height: 360px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      main {
+        width: min(100% - 18px, 620px);
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .panel {
+        padding: 18px 14px;
+      }
+
+      td {
+        grid-template-columns: 92px minmax(0, 1fr);
       }
     }
   </style>
@@ -318,6 +484,9 @@
     <section class="panel" aria-label="0056 介紹">
       <h2>0056 是什麼？</h2>
       <div class="intro-layout">
+        <p class="intro-copy">
+          0056 是「元大台灣高股息證券投資信託基金」，常見簡稱是元大高股息。它是一檔台股高股息 ETF，目標不是單純買進市值最大的公司，而是追蹤以高股息為核心邏輯編製的指數。對想要現金流的人來說，0056 的特色是把投資成果透過配息定期發放出來，但配息金額與基金淨值仍會受到市場波動影響。
+        </p>
         <dl class="info-list">
           <div class="info-row">
             <dt>基金代號</dt>
@@ -369,17 +538,10 @@
       </div>
 
       <div class="detail-copy">
-        <div>
-          <p>
-            這份資料不是在找最高報酬率，而是回答一個更貼近存股者的問題：如果不想一直猜高低點、也不想靠賣股變現，0056 長期累積後，每年實際拿到的現金流會長成什麼樣子。
-          </p>
-          <p>
-            回測方式是從 2017 年開始，每年第一個交易日投入 20 萬買進 0056，股息領出、不再投入。表中的市值是該年度最後一筆可得價格估算，配息則是當年度實際領到的現金股息。
-          </p>
-        </div>
+        
         <div>
           <ul>
-            <li>買進價格：每年第一個交易日收盤價。</li>
+            <li>買進價格：每年第一個交易日收盤價 投入20萬。</li>
             <li>統計期間：2017/01/01 至 2026/05/24。</li>
             <li>股息處理：領出當現金流，不再投入。</li>
             <li>未納入：交易成本、手續費、稅費。</li>
@@ -400,74 +562,74 @@
         </thead>
         <tbody>
           <tr>
-            <td>2017</td>
-            <td>200,000 元</td>
-            <td>216,263 元</td>
-            <td>8,218 元</td>
-            <td>1</td>
+            <td data-label="年度">2017</td>
+            <td data-label="累計投入">200,000 元</td>
+            <td data-label="年底或統計日市值">216,263 元</td>
+            <td data-label="當年領到股息">8,218 元</td>
+            <td data-label="配息次數">1</td>
           </tr>
           <tr>
-            <td>2018</td>
-            <td>400,000 元</td>
-            <td>397,623 元</td>
-            <td>24,083 元</td>
-            <td>1</td>
+            <td data-label="年度">2018</td>
+            <td data-label="累計投入">400,000 元</td>
+            <td data-label="年底或統計日市值">397,623 元</td>
+            <td data-label="當年領到股息">24,083 元</td>
+            <td data-label="配息次數">1</td>
           </tr>
           <tr>
-            <td>2019</td>
-            <td>600,000 元</td>
-            <td>724,306 元</td>
-            <td>45,003 元</td>
-            <td>1</td>
+            <td data-label="年度">2019</td>
+            <td data-label="累計投入">600,000 元</td>
+            <td data-label="年底或統計日市值">724,306 元</td>
+            <td data-label="當年領到股息">45,003 元</td>
+            <td data-label="配息次數">1</td>
           </tr>
           <tr>
-            <td>2020</td>
-            <td>800,000 元</td>
-            <td>954,720 元</td>
-            <td>51,003 元</td>
-            <td>1</td>
+            <td data-label="年度">2020</td>
+            <td data-label="累計投入">800,000 元</td>
+            <td data-label="年底或統計日市值">954,720 元</td>
+            <td data-label="當年領到股息">51,003 元</td>
+            <td data-label="配息次數">1</td>
           </tr>
           <tr>
-            <td>2021</td>
-            <td>1,000,000 元</td>
-            <td>1,294,749 元</td>
-            <td>69,403 元</td>
-            <td>1</td>
+            <td data-label="年度">2021</td>
+            <td data-label="累計投入">1,000,000 元</td>
+            <td data-label="年底或統計日市值">1,294,749 元</td>
+            <td data-label="當年領到股息">69,403 元</td>
+            <td data-label="配息次數">1</td>
           </tr>
           <tr>
-            <td>2022</td>
-            <td>1,200,000 元</td>
-            <td>1,131,357 元</td>
-            <td>93,537 元</td>
-            <td>1</td>
+            <td data-label="年度">2022</td>
+            <td data-label="累計投入">1,200,000 元</td>
+            <td data-label="年底或統計日市值">1,131,357 元</td>
+            <td data-label="當年領到股息">93,537 元</td>
+            <td data-label="配息次數">1</td>
           </tr>
           <tr>
-            <td>2023</td>
-            <td>1,400,000 元</td>
-            <td>1,959,304 元</td>
-            <td>115,253 元</td>
-            <td>2</td>
+            <td data-label="年度">2023</td>
+            <td data-label="累計投入">1,400,000 元</td>
+            <td data-label="年底或統計日市值">1,959,304 元</td>
+            <td data-label="當年領到股息">115,253 元</td>
+            <td data-label="配息次數">2</td>
           </tr>
           <tr>
-            <td>2024</td>
-            <td>1,600,000 元</td>
-            <td>2,118,948 元</td>
-            <td>209,700 元</td>
-            <td>4</td>
+            <td data-label="年度">2024</td>
+            <td data-label="累計投入">1,600,000 元</td>
+            <td data-label="年底或統計日市值">2,118,948 元</td>
+            <td data-label="當年領到股息">209,700 元</td>
+            <td data-label="配息次數">4</td>
           </tr>
           <tr>
-            <td>2025</td>
-            <td>1,800,000 元</td>
-            <td>2,322,000 元</td>
-            <td>244,780 元</td>
-            <td>4</td>
+            <td data-label="年度">2025</td>
+            <td data-label="累計投入">1,800,000 元</td>
+            <td data-label="年底或統計日市值">2,322,000 元</td>
+            <td data-label="當年領到股息">244,780 元</td>
+            <td data-label="配息次數">4</td>
           </tr>
           <tr>
-            <td>2026</td>
-            <td>2,000,000 元</td>
-            <td>3,118,185 元</td>
-            <td>128,049 元</td>
-            <td>2</td>
+            <td data-label="年度">2026</td>
+            <td data-label="累計投入">2,000,000 元</td>
+            <td data-label="年底或統計日市值">3,118,185 元</td>
+            <td data-label="當年領到股息">128,049 元</td>
+            <td data-label="配息次數">2</td>
           </tr>
         </tbody>
       </table>

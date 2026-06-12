@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>如果要定期定額 ETF，每個月該投多少錢？</title>
+  <meta name="description" content="用先畫靶再射箭法，回推 ETF 定期定額每月投入金額。">
+  <style>
+    :root {
+      --bg: #f8f4e8;
+      --paper: #ffffff;
+      --ink: #0e1d2b;
+      --muted: #64707d;
+      --line: #e7dcc3;
+      --blue: #243847;
+      --shadow: 0 18px 46px rgba(36, 56, 71, 0.11);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.85;
+      letter-spacing: 0;
+      background:
+        linear-gradient(rgba(231, 220, 195, 0.62) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(231, 220, 195, 0.62) 1px, transparent 1px),
+        var(--bg);
+      background-size: 72px 72px;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(231, 220, 195, 0.9);
+      background: rgba(248, 244, 232, 0.92);
+      backdrop-filter: blur(14px);
+    }
+
+    .topbar-inner,
+    .wrap {
+      width: min(860px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .topbar-inner {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      font-weight: 900;
+      color: var(--ink);
+      line-height: 1.1;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .nav {
+      display: flex;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav a {
+      text-decoration: none;
+    }
+
+    .nav a:hover {
+      color: var(--ink);
+    }
+
+    main {
+      padding: 54px 0 0;
+    }
+
+    .article {
+      padding: 38px;
+      border-radius: var(--radius);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    h1,
+    h2 {
+      line-height: 1.25;
+    }
+
+    h1 {
+      font-size: clamp(34px, 6vw, 58px);
+      font-weight: 950;
+      max-width: 9em;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      margin-top: 42px;
+      font-size: clamp(26px, 4vw, 36px);
+      font-weight: 950;
+    }
+
+    p {
+      margin-top: 16px;
+      color: #223243;
+      font-size: 19px;
+    }
+
+    .mode-list {
+      margin: 20px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      font-size: 19px;
+      font-weight: 850;
+    }
+
+    .mode-list li {
+      padding: 12px 14px;
+      border-left: 5px solid var(--blue);
+      background: #fff9df;
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    .arrow-list {
+      margin: 20px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .article-image {
+      margin: 20px 0 4px;
+    }
+
+    .article-image img {
+      display: block;
+      width: min(100%, 560px);
+      height: auto;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+    }
+
+    .subscribe {
+      padding: 48px 0 72px;
+    }
+
+    .subscribe-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(310px, 430px);
+      gap: 28px;
+      align-items: center;
+      padding: 32px;
+      border-radius: var(--radius);
+      background: var(--blue);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .subscribe h2 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 44px);
+    }
+
+    .subscribe p {
+      margin-top: 14px;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .form {
+      display: grid;
+      gap: 10px;
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .form iframe {
+      width: 100%;
+      min-height: 319px;
+      border: 0;
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .form-note {
+      margin: 2px 0 0;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .fallback-link {
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .risk {
+      padding: 18px 0 34px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 760px) {
+      .topbar-inner,
+      .wrap {
+        width: min(100% - 32px, 860px);
+      }
+
+      .nav {
+        display: none;
+      }
+
+      main {
+        padding-top: 34px;
+      }
+
+      .article,
+      .subscribe-inner {
+        padding: 22px;
+      }
+
+      p,
+      .mode-list {
+        font-size: 17px;
+      }
+
+      .subscribe-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">好好理財<small>goodgood.tw</small></div>
+      <nav class="nav" aria-label="頁面導覽">
+        <a href="#article">文章</a>
+        <a href="#form">十年三百萬筆記</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article id="article" class="wrap article">
+      <h1>如果要定期定額 ETF，每個月該投多少錢？</h1>
+
+      <p>關於這個大哉問，已經有很多解法。</p>
+      <p>例如六個罐子理財法，用收入的 6 / 3 / 1 來分配。</p>
+      <p>或是扣掉生活花費與緊急預備金後，剩下的錢全部投入。</p>
+      <p>各種方法都有擁護者，反正婆說婆有理，公說公有理。</p>
+      <p>今天我想請公婆讓一讓，介紹我自己的方法：</p>
+      <p>先畫靶再射箭法。</p>
+      <p>顧名思義，先把目標算出來，再回頭抓每個月要存多少。</p>
+      <p>這個方法的好處是，不會只是憑感覺設定金額。</p>
+      <p>而是先知道自己想去哪裡，再決定每個月要射出多大的箭。</p>
+
+      <h2>先畫靶，再看箭要多大</h2>
+      <p>畫靶再射箭法，我抓出三個重要金額：</p>
+      <p>6,000 元、12,000 元、20,000 元。</p>
+      <ul class="mode-list">
+        <li>簡單關卡（Easy Mode）：每月存 6,000 元</li>
+        <li>中等關卡（Intermediate Mode）：每月存 12,000 元</li>
+        <li>進階關卡（Advanced Mode）：每月存 20,000 元</li>
+      </ul>
+
+      <h2>定存金額對應年化報酬率目標表</h2>
+      <p>上述三個金額，是透過這張表抓出來的。</p>
+      <figure class="article-image">
+        <img src="assets/dca-amount.png" alt="定存金額對應年化報酬率目標表">
+      </figure>
+      <p>也就是看著靶，決定要設怎樣的箭。</p>
+      <p>舉例來說：</p>
+      <p>年化報酬率 5% 的情況下，要存到 300 萬，月存約 19,400 元。</p>
+      <p>年化報酬率 7% 的情況下，要存到 300 萬，月存約 17,400 元。</p>
+      <p>透過這張表，我抓出大部分人想存到第一桶金、兩桶金、三桶金時，最重要的三個關卡。</p>
+
+      <h2>第一關：社會新鮮人，下定決心月存 6,000 元！</h2>
+      <p>如果收入不高，第一個定期定額金額，我會先放在 6,000 元。</p>
+      <p>原因是，每個月存 6,000 元，如果年化報酬落在 6% 到 7%，大約十年可以靠近第一桶金。</p>
+      <p>你可能會想：</p>
+      <p>「可是選到年化報酬率 10% 的商品，月存 5,000 元就夠啦！何必多存 1,000 元？」</p>
+      <p>因為長期股市的年化報酬率，不該永遠用太樂觀的數字去估。</p>
+      <p>這幾年股市年化報酬率高，不代表它會一直持續。</p>
+      <p>所以我會用 6% 到 7% 比較保守地去抓。</p>
+      <p>如果目標是十年存到一桶金，月存 6,000 元就是很清楚的第一關。</p>
+      <p>如果未來十年股市表現仍然很好，你也能存到超過百萬。</p>
+      <p>所以，不要掙扎了。</p>
+      <p>5,000 vs 6,000 元，我選 6,000 元，也比較吉利 ＸＤ</p>
+
+      <h2>第二關：收入提高後，往 12,000 元邁進</h2>
+      <p>老實說，十年存到第一桶金，確實是有點少。</p>
+      <p>會不會太直接？</p>
+      <p>不過如果你的生活很美滿，另一半很可愛，十年存個一百萬，世界仍然充滿無限色彩，是吧？</p>
+      <p>但如果你知道自己辦不到無慾而剛，也過不了饅頭配豆漿的生活，那收入提高後，就要把月存金額一起提高。</p>
+      <p>這時候，我會把目標放到 12,000 元。</p>
+      <p>因為一旦提高到這個金額，十年的存款目標就會靠近兩桶金。</p>
+      <p>這一關的重點不是要你現在立刻做到。</p>
+      <p>而是收入提高時，不要讓生活支出自動升級，投資金額卻永遠停在原地。</p>
+      <p>薪水變高，箭也要變大支一點。</p>
+
+      <h2>第三關：我的理想狀態是，月存 20,000 元</h2>
+      <p>設定這個金額的原因很暴力又簡單。</p>
+      <p>月存 2 萬，就是十年存 300 萬的重要門票。</p>
+      <p>這個金額的好處是，你不用把所有期待都放在很高的年化報酬率上。</p>
+      <p>金額提高後，能選擇的標的也更多。</p>
+      <p>因為不用為了達標，硬去追求很高的報酬率。</p>
+      <p>這是很多人會忽略的事情。</p>
+      <p>很多人會想：</p>
+      <p>「我投入金額比較少，那我是不是要找報酬率更高的商品？」</p>
+      <p>但反過來想，其實也可以是：</p>
+      <p>「我能不能提高每月投入金額，讓自己不用那麼依賴高報酬率？」</p>
+      <p>所以我會把 20,000 元列成第三關。</p>
+
+      <h2>十年存 300 萬，是一個可以努力靠近的狀態</h2>
+      <p>十年存 300 萬，我覺得是很重要的目標。</p>
+      <p>每個人都應該要有餘裕過生活。</p>
+      <p>不是每天都在煩惱錢，也不是每次遇到突發支出就被打爆。</p>
+      <p>如果要一步一步往這個目標靠近，就是這三把箭：</p>
+      <ul class="arrow-list">
+        <li>第一把箭：6,000 元</li>
+        <li>第二把箭：12,000 元</li>
+        <li>第三把箭：20,000 元</li>
+      </ul>
+      <p>你現在在哪一關，不重要。</p>
+      <p>重要的是知道下一關在哪裡。</p>
+      <p>如果你現在只能每月 3,000 元，也沒關係。</p>
+      <p>那就是還在熱身。</p>
+      <p>先開始，再慢慢升級。</p>
+    </article>
+
+    <section id="form" class="wrap subscribe">
+      <div class="subscribe-inner">
+        <div>
+          <h2>加入十年三百萬筆記</h2>
+          <p>如果你想繼續收到 ETF、定期定額、資產配置和長期投資整理，可以在下面留下 email。</p>
+          <p>我不會每天寄，也不會一直推銷。比較像是一份長期的理財學習筆記。</p>
+        </div>
+
+        <div class="form">
+          <iframe src="https://tally.so/embed/zxGoV0?alignLeft=1&hideTitle=1&dynamicHeight=1" data-tally-src="https://tally.so/embed/zxGoV0?alignLeft=1&hideTitle=1&dynamicHeight=1" loading="lazy" width="100%" height="319" frameborder="0" marginheight="0" marginwidth="0" title="加入十年三百萬筆記"></iframe>
+          <p class="form-note">
+            如果表單沒有正常顯示，可以
+            <a class="fallback-link" href="https://tally.so/r/zxGoV0" target="_blank" rel="noopener">直接開啟表單</a>。
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap risk">
+    本文僅供學習參考，非投資建議，也不是任何 ETF 或股票的買進、賣出建議。ETF 仍有價格波動、匯率、追蹤誤差、集中度、流動性、手續費與稅務等風險。過去績效不代表未來報酬。
+  </footer>
+
+  <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v;s.onerror=v;d.body.appendChild(s);}</script>
+</body>
+</html>
